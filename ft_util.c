@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_util.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeykim <taeykim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 01:19:00 by taeykim           #+#    #+#             */
+/*   Updated: 2022/09/23 01:20:32 by taeykim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
-size_t ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-    {
-        i++;
-    }
-    return (i);    
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
-int ft_print(const char *str)
+int	ft_print(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
