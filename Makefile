@@ -1,4 +1,3 @@
-NAME = minitalk
 SERVER_TARGET = server
 CLIENT_TARGET = client
 
@@ -23,7 +22,7 @@ OBJS = $(FILES:.c=.o)
 SERVER_OBJS = $(SERVER_FILES:.c=.o)
 CLIENT_OBJS = $(CLIENT_FILES:.c=.o)
 
-all:	$(NAME)
+all:	server client
 
 server: $(SERVER_TARGET)
 
