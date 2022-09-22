@@ -11,7 +11,9 @@ AR = ar rcs
 
 FILES = ft_util.c	\
 		ft_strdup.c \
-		ft_itoa.c
+		ft_itoa.c	\
+		ft_atoi.c 	\
+		ft_binary_parser.c
 
 SERVER_FILES = server.c $(FILES)
 

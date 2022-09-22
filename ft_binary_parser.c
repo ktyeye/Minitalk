@@ -31,15 +31,13 @@ char	*ft_binary_parser(int num)
 {
 	char *buffer;
 
-	buffer = (char *)malloc(sizeof(char) * (32));
+	buffer = (char *)malloc(sizeof(char) * (8));
 	if (!buffer)
 		return (0);
 
-    for (int i = 0; i < 32; i++) 
+    for (int i = 0; i < 8; i++) 
         buffer[i] = '0';
-    insert_binary(buffer, num, 31);
+    insert_binary(buffer, num, 7);
     
     return buffer;
 }
-
-

@@ -2,35 +2,44 @@
 
 void	handler(int signo, siginfo_t *info, void *context)
 {
-	static unsigned char	buf[100];
-	static int				idx;
-	static int				count;
+    /* 
+        배열에 값을 저장 -> 127이 종료 신호이기 때문에 
+        127이 나올 경우 End
+    */
+    static unsigned char chr;
+    static int index;
+    static int count;
 
-
-	if (signo == SIGUSR1)
-        write (1, "0", 1);
-	else if (signo == SIGUSR2)
-        write(0, "1", 1);
+    index++;
+    if (signo == SIGUSR1)
+        chr = (chr << 1) + 1;
+    else if (signo == SIGUSR2)
+        chr = (chr << 1);
 }
 
-void print_pid() {
-    char *pid = ft_itoa(getpid());
-    ft_strlen(pid);
+bool print_pid() {
+    char *pid_chr;
     
+    pid_chr = ft_itoa(getpid());
+    if (!pid_chr)
+        return (0);
+    ft_print("SERVER PID : ");
+    ft_print(pid_chr);
+    return (true);
 }
-
-
 
 int		main(void)
 {
 	struct sigaction	pkt;
 
 	pkt.sa_sigaction = handler;
-	pkt.sa_flags = SA_SIGINFO; // siginfo 해준 이유.
+	pkt.sa_flags = SA_SIGINFO; // siginfo 해준 이유?
 
-    usleep(100);
-
-
+    if (!print_pid())
+    {
+        ft_print("malloc error");
+        exit(1);
+    }
 	if (sigaction(SIGUSR1, &pkt, NULL) != 0)
 	{
 		write(1, "Sigaction Error", 15);

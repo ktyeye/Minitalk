@@ -1,51 +1,34 @@
 #include "minitalk.h"
 
-int count_binary_length(int num)
-{
-	int	i;
-
-	i = 0;
-	while (num)
-	{
-		num /= 2;
-		i++;
-	}
-	return (i);
-}
-
-void    insert_binary(char *buffer, int num, int index)
-{
-    if (num / 2)
-    {
-        insert_binary(buffer, num / 2 , index - 1);
-        buffer[index] = num % 2 + '0';
-    }
-    else
-    {
-        buffer[index] = num % 2 + '0';
-    }
-    printf("index : %d, num : %d, buffer : %d\n", index, num, num % 2); 
-}
-
-char	*ft_binary_parser(int num)
-{
-	char *buffer;
-
-	buffer = (char *)malloc(sizeof(char) * (32));
-	if (!buffer)
-		return (0);
-
-    for (int i = 0; i < 32; i++) 
-        buffer[i] = '0';
-    insert_binary(buffer, num, 31);
-    
-    return buffer;
-}
 
 int main() {
-    printf("test : %s", ft_binary_parser(64));
+    static unsigned char buf[8];
 
-    return 0;
+    int a = 'a' ;//96
+    int b = 'b' ;//97
+    int index = 0;
+    
+    a &= b;
+
+    int temp = 1;
+    unsigned int zero = 0;
+
+    // printf("buf : %s\n", buf);
+    printf("temp : %d\n", (temp << 3 )+ 1);
+    printf("reverse_ zero : %u\n", ~zero);
+    // printf("%d, %c\n", index, index);
+
+    // printf("a : %u, b: %d\n", a, b);
+    // printf("a &=b : %u, %c\n", a, a);
+    // printf("a &=b : %u, %c\n", a, 127);
+
+    
+
+
+    // printf("index : %d, buf : %s, chr : %c\n", index, buf, buf[index]);
+
+
+    // printf("index : %d, buf : %s, chr : %c\n", index, buf, buf[index]);
+
+    return (0);
 }
-
-
