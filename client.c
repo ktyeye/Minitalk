@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeykim <taeykim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/23 01:13:16 by taeykim           #+#    #+#             */
+/*   Updated: 2022/09/23 01:17:01 by taeykim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
-
-void post(int pid, int bit) {
+void	post(int pid, int bit)
+{
 	if (bit == 1)
 		kill(pid, SIGUSR1);
 	else if (bit == 0)
@@ -29,8 +41,7 @@ void	send_packet(int pid, int num, int index)
 
 void	send_msg(int pid, char *msg)
 {
-	int i;
-	int temp;
+	int	i;
 
 	i = 0;
 	while (msg[i])
@@ -41,7 +52,7 @@ void	send_msg(int pid, char *msg)
 	send_packet(pid, msg[i], 0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	if (argc != 3)
 		return (0);

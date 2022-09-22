@@ -1,6 +1,0 @@
-
-rm a.out
-gcc -o server.c server.out
-./server.out
-
-gcc -o client.c server.out

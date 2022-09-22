@@ -1,7 +1,5 @@
 SERVER_TARGET = server
 CLIENT_TARGET = client
-
-
 CC = gcc
 CFLAG = -Wall -Wextra -Werror
 INCLUDE = ./minitalk.h
@@ -11,11 +9,9 @@ AR = ar rcs
 FILES = ft_util.c	\
 		ft_strdup.c \
 		ft_itoa.c	\
-		ft_atoi.c 	\
-		ft_binary_parser.c
+		ft_atoi.c
 
 SERVER_FILES = server.c $(FILES)
-
 CLIENT_FILES = client.c $(FILES)
 
 OBJS = $(FILES:.c=.o)
@@ -28,25 +24,21 @@ server: $(SERVER_TARGET)
 
 client:	$(CLIENT_TARGET)
 
-
-$(NAME):	$(OBJS)
-	$(CC) -o $@ $^
-
 $(SERVER_TARGET):	$(SERVER_OBJS) $(OBJS)
-	$(CC) -o $@ $^
+	$(CC) $(CFLAG) -o $@ $^
 
 $(CLIENT_TARGET): $(CLIENT_OBJS) $(OBJS)
-	$(CC) -o $@ $^
+	$(CC) $(CFLAG) -o $@ $^
 
 %.o:	%.c
-	$(CC) -I$(INCLUDE) -c $< -o $@ -g3
+	$(CC) $(CFLAG) -I$(INCLUDE) -c $< -o $@ -g3
 
 clean:
 	$(RM) $(OBJS) $(SERVER_OBJS) $(CLIENT_OBJS)
 
 fclean:	clean
-	$(RM) $(NAME) $(SERVER_TARGET) $(CLIENT_TARGET)
+	$(RM) $(SERVER_TARGET) $(CLIENT_TARGET)
 
 re:	fclean
 
-.PHONY : all clean fclean re bonus run server client
+.PHONY : all clean fclean re run server client
