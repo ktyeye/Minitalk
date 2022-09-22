@@ -35,10 +35,10 @@ void	send_msg(int pid, char *msg)
 	i = 0;
 	while (msg[i])
 	{
+		printf("%c, %d\n", msg[i], msg[i]);
 		send_packet(pid, msg[i], 0);
 		i++;
 	}
-	send_packet(pid, msg[i], 0);
 }
 
 int main(int argc, char *argv[])
