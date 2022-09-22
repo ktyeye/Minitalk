@@ -23,20 +23,20 @@ void print_pid() {
 
 int		main(void)
 {
-	struct sigaction	act1;
+	struct sigaction	pkt;
 
-	act1.sa_sigaction = handler;
-	act1.sa_flags = SA_SIGINFO;
+	pkt.sa_sigaction = handler;
+	pkt.sa_flags = SA_SIGINFO; // siginfo 해준 이유.
 
     usleep(100);
 
 
-	if (sigaction(SIGUSR1, &act1, NULL) != 0)
+	if (sigaction(SIGUSR1, &pkt, NULL) != 0)
 	{
 		write(1, "Sigaction Error", 15);
 		exit(1);
 	}
-	if (sigaction(SIGUSR2, &act1, NULL) != 0)
+	if (sigaction(SIGUSR2, &pkt, NULL) != 0)
 	{
 		write(1, "Sigaction Error", 15);
 		exit(1);

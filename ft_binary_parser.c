@@ -42,10 +42,4 @@ char	*ft_binary_parser(int num)
     return buffer;
 }
 
-int main() {
-    printf("test : %s", ft_binary_parser(64));
-
-    return 0;
-}
-
 
